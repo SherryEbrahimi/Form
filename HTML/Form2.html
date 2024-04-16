@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+<meta charset="utf-8" />
+<title>Form </title>
+<!-- Link to external CSS file -->
+<link rel="stylesheet" href="../css/mystyles.css" />
+<!-- Include external JavaScript file -->
+<script src="../js/verror.js"> </script> 
+</head>
+<body>
+
+  <!-- Form for user input -->
+<form name="contact" action="../php/FormToEmail.php" method="post">
+<table>
+<tr>
+<th>
+
+<!-- Progress bar indicating form completion progress -->
+progress: <progress max="2" value="0"> step 1 of 3
+</progress>
+<br/><br/>
+
+<!-- Fieldset for entering type details -->
+<fieldset class="color">
+<legend>Enter Tipe Details</legend>
+<br/>
+<br/>
+<fieldset><label>Date/Time of incident:</label><input type="date" id="datepick" size="50" name="date"></fieldset>
+<br/>
+<fieldset><label>Tipe Details:</label><input type="text"/></fieldset>
+<br/>
+<fieldset><label for="myfile">Attach Supporting File:</label>
+  <input type="file" id="myfile" name="myfile"><br><br>
+  </fieldset>
+<br/>
+<fieldset><label>Urgency:</label><input type="range" id="vol" name="vol" min="0" max="10"></fieldset>
+<br/>
+</fieldset>
+
+<!-- Fieldset for communication preferences -->
+<fieldset class="color">
+<legend> Communication Perefrences</legend>
+<fieldset><label>May we contact you about this tipe:</label><input type="checkbox" id="vehicle1" name="vehicle1" value="cm"/></fieldset>
+<br/>
+<fieldset class="color"><legend>Preferred Contact Method:</legend>
+<br/>
+<fieldset><label>Phone:</label><input type="radio" id="phone2" name="phone2" value="phone2"/></fieldset>
+<br/>
+<fieldset><label>Email:</label><input type="radio" id="email2" name="email2" value="email2"/></fieldset>
+<br/>
+</fieldset>
+</fieldset>
+<br/>
+
+<!-- Progress bar indicating staff office availability -->
+Staff in the office <progress max="2" value="0"> step 1 of 3
+</progress>
+<br/><br/>
+
+ <!-- Submit button -->   
+<input type="submit" value="Continue" id="submit"  />
+
+</th>
+</tr>
+</table>
+</form>
+
+<!-- Include datepicker JavaScript file -->
+<script src="datepickr.min.js"></script>
+</body>
+</html>
