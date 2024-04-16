@@ -1,0 +1,279 @@
+/*
+Pseudocode:It is an informal and contrived way of writing programs in which you represent the sequence of actions and instructions
+(aka algorithms) in a form that humans can easily understand.
+ 
+Flow Charts: JavaScript Flowchart is a visual representation of a process in which each step in the process is represented by a different shape and contains a short description of the process step.
+ 
+ Internal Comments in code: Comments are notes written in the code that are ignored by the JavaScript engine, which means they don't affect the output in any way Their sole purpose describing how and why code works to other developers, and yourself.
+*/
+
+var myInterval = setInterval(savedata, 2000);
+function validateErrors(formField, errorField)
+{
+theField = document.getElementById(formField);
+//create a variable for the form field
+theError = document.getElementById(errorField);
+//create a variable for the error field
+var thePattern= new RegExp("^"+theField.pattern+"$");
+//create a new pattern by reading in pattern from HTML and adding delimiters
+if(!thePattern.test(theField.value)) 
+{
+//test data in field against regex pattern from HTML
+theField.style.background ='#FF9999';
+//sets field background to red
+theError.style.display = "block";
+//displays the <span> containing the error msg
+theError.innerHTML= theField.title;
+//displays the error message by reading the HTML title and writing it to the
+//span
+theField.focus();
+//set focus to field
+return false;
+}
+else
+{
+theField.style.background ='#CCFFCC';
+//sets field background to green 
+theError.style.display = "none";
+//removes error message
+return true;
+}
+} 
+
+
+function validate()
+{
+
+
+var elements = document.getElementById("form1").elements
+
+//Loops through all of the elements in the form 
+for (var i = 0, element; element = elements[i++];)
+{
+
+if ((element =='[object HTMLInputElement]' || element == '[object HTMLSelectElement]') && (element.style.backgroundColor !='rgb(204, 255, 204)'))
+
+{
+//if input is not a color picker
+
+if (element.type!='color' && element.type!='submit')
+
+{
+
+alert("Please enter data for any fields that are not green"); 
+ 
+return false;
+
+}
+
+}
+
+}
+if (document.getElementById("the ID for your color picker goes here").value
+!='#000000')
+
+{
+
+alert("please select a colour from the colour picker"); document.getElementById("the ID for your color picker goes here").focus(); return false;
+}
+
+}
+
+
+
+
+function changeState() {
+ var country = document.getElementById('country').value; 
+ var state = document.getElementById('state');
+
+if(country === 'AU') {
+state.innerHTML = '';
+
+state.options[state.options.length] = new Option('-- select state --','1');
+state.options[state.options.length] = new Option('South Australia', 'SA'); 
+state.options[state.options.length] = new Option('New South Wales', 'NSW'); 
+state.options[state.options.length] = new Option('Victoria', 'VIC');
+ state.options[state.options.length] = new Option('Queensland', 'QLD'); 
+ state.options[state.options.length] = new Option('Tasmania', 'TAS'); 
+ state.options[state.options.length] = new Option('Western Australia','WA'); 
+ state.options[state.options.length] = new Option('Australian Capital Territory', 'ACT');
+state.options[state.options.length] = new Option('Northern Territory','NT');
+
+
+}
+else if(country === 'NZ') { state.innerHTML = '';
+ state.options[state.options.length] = new Option('-- select state --','1');
+ state.options[state.options.length] = new Option('Auckland', 'AU'); 
+ state.options[state.options.length] = new Option('Nothland', 'NO'); 
+ state.options[state.options.length] = new Option('Southland', 'SO');
+}
+else {
+state.innerHTML = '';
+state.options[state.options.length] = new Option('-- select country first --', '');
+}
+
+if (document.getElementById("country").value == '1')
+{
+
+document.getElementById("country").style.background  ='#FF9999';
+}
+else
+{
+
+document.getElementById("country").style.background  ='#CCFFCC';
+
+}
+}
+function stateColours()
+{
+
+if (document.getElementById("state").value == '1')
+{
+
+document.getElementById("state").style.background  ='#FF9999';
+}
+else
+{
+
+document.getElementById("state").style.background  ='#CCFFCC';
+
+}
+}
+
+/*
+validate postcode it depends on the estate each state had postcode and start with number,we need to add function and var state.The swich is evaluated once ,switch (state){}.
+The value is compared with the values of each case. (case "stateid":var postcodeRegEx=/^firdtnumber[0-9]{3}$/; break;).each state postcode start with unic number in pattern we need to add start number and 
+number of the postcode in Austalia 4 number.If there is a match with state the associated block of code is executed and texbox color is green.
+document.getElementById("postcode").style.background  ='#FF9999';. ealse there is no match with state, the default code block is executed and the texbox is red. document.getElementById("postcode").style.background  ='#CCFFCC';
+*/
+function validatePostcode(){
+	
+var state = (document.getElementById("state").value);
+
+switch (state)
+
+{
+
+case "SA":
+
+var postcodeRegEx=/^5[0-9]{3}$/; break;
+
+case "NSW":
+
+var postcodeRegEx=/^1[0-9]{3}$/; break;
+
+case "VIC":
+
+var postcodeRegEx=/^3[0-9]{3}$/; break;
+
+case "QLD":
+
+var postcodeRegEx=/^4[0-9]{3}$/; break;
+
+case "TAS":
+
+var postcodeRegEx=/^7[0-9]{3}$/; break;
+
+case "WA":
+
+var postcodeRegEx=/^6[0-9]{3}$/; break;
+
+
+case "ACT":
+
+var postcodeRegEx=/^2[0-9]{3}$/; break;
+
+case "NT":
+
+var postcodeRegEx=/^0[0-9]{3}$/; break;
+}
+
+if(!postcodeRegEx.test(document.getElementById("postcode").value))
+
+{
+document.getElementById("postcode").style.background  ='#FF9999';
+
+
+return false;
+}
+
+else
+{
+	
+document.getElementById("postcode").style.background  ='#CCFFCC';
+
+return true;
+}
+}
+/*
+variable for savedata at 5 secand,var myInterval = setInterval(savedata, 5000); function save data and variable for each txtbox var nameofthebox= document.querySelector("#id of box").value; 
+localStorage for each text box localStorage.setItem("id",id);
+function retrievedata() and variable for each text box var idname = localStorage.getItem("idname"); document.querySelector("#idname").value =idname;
+*/
+
+
+var myInterval = setInterval(savedata, 5000);
+
+function savedata(){  
+var username = document.querySelector("#username").value;   
+var name = document.querySelector("#name").value; 
+var adress = document.querySelector("#adress").value; 
+var suberb = document.querySelector("#suberb").value; 
+var city= document.querySelector("#city").value;  
+var postcode= document.querySelector("#postcode").value; 
+var email = document.querySelector("#email").value; 
+var phone = document.querySelector("#phone").value;  
+var website = document.querySelector("#website").value; 
+var age = document.querySelector("#age").value; 
+
+localStorage.setItem("username",username);
+localStorage.setItem("name",name);
+localStorage.setItem("adress", adress); 
+localStorage.setItem("suberb",suberb); 
+localStorage.setItem("city",city); 
+localStorage.setItem("postcode",postcode);
+localStorage.setItem("email",email); 
+localStorage.setItem("phone",phone); 
+localStorage.setItem("website",website); 
+localStorage.setItem("age",age);
+}
+
+function retrievedata(){      
+var username = localStorage.getItem("username");
+var name = localStorage.getItem("name");
+var adress = localStorage.getItem("adress");
+var suberb = localStorage.getItem("suberb");
+var city = localStorage.getItem("city");
+var postcode = localStorage.getItem("postcode");
+var email = localStorage.getItem("email");
+var phone = localStorage.getItem("phone");
+var website = localStorage.getItem("website");
+var age = localStorage.getItem("age");
+
+document.querySelector("#username").value = username;
+document.querySelector("#name").value = name;
+document.querySelector("#adress").value = adress;
+document.querySelector("#suberb").value = suberb;
+document.querySelector("#city").value = city;
+document.querySelector("#postcode").value = postcode;
+document.querySelector("#email").value = email;
+document.querySelector("#phone").value = phone;
+document.querySelector("#website").value = website;
+document.querySelector("#age").value = age;
+}
+
+
+
+
+
+
+   
+
+
+	
+
+	
+
+
+
+
